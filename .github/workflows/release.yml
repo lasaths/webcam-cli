@@ -70,8 +70,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "v${{ needs.check-version.outputs.version }}" -m "Release v${{ needs.check-version.outputs.version }}"
-          git push origin "v${{ needs.check-version.outputs.version }}"
+          if ! git ls-remote --tags origin | grep -q "refs/tags/v${{ needs.check-version.outputs.version }}$"; then
+            git tag -a "v${{ needs.check-version.outputs.version }}" -m "Release v${{ needs.check-version.outputs.version }}"
+            git push origin "v${{ needs.check-version.outputs.version }}"
+          else
+            echo "Tag v${{ needs.check-version.outputs.version }} already exists, skipping tag creation"
+          fi
       
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
