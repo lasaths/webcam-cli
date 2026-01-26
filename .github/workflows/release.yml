@@ -20,7 +20,13 @@ jobs:
         id: check
         run: |
           # Extract version from __init__.py
-          VERSION=$(python -c "import re; print(re.search(r'__version__\s*=\s*[\"']([^\"']+)[\"']', open('src/webcam_mcp/__init__.py').read()).group(1))")
+          VERSION=$(python3 << 'EOF'
+          import re
+          with open('src/webcam_mcp/__init__.py') as f:
+              match = re.search(r'__version__\s*=\s*["\']([^"\']+)["\']', f.read())
+              print(match.group(1))
+          EOF
+          )
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           
           # Get latest tag (or 0.0.0 if none)
