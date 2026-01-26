@@ -10,6 +10,6 @@ class ServerConfig:
     photo_height: int = 1080
     video_width: int = 640
     video_height: int = 480
-    jpeg_quality: int = 75
+    jpeg_quality: int = 90
     host: str = "0.0.0.0"
     port: int = 8000
