@@ -39,6 +39,8 @@ webcam-mcp
 
 The server will start on `http://0.0.0.0:8000/sse` by default.
 
+You can test the server using any MCP client, e.g., MCP Inspector (install via `npx @modelcontextprotocol/inspector`).
+
 ### CLI options
 
 | Option | Type | Default | Description |
