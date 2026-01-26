@@ -4,6 +4,7 @@
 
 **MCP server for webcam access - capture photos and video for LLM agents**
 
+[![CI](https://github.com/pavel-kirienko/webcam_mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/pavel-kirienko/webcam_mcp/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </div>
@@ -191,3 +192,8 @@ pytest tests/test_camera.py
 ```
 
 All tests use mocked camera hardware, so no physical webcam is required for testing.
+
+### Release
+
+To tag and release a new version, push a new commit to `main` with a new `__version__` string.
+This will trigger a new tag and a new release push to PyPI.
