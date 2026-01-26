@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "webcam-mcp"
+version = "0.1.0"
+description = "MCP server for webcam access - capture photos and video for LLM agents"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.6.0,<2.0.0",
+    "opencv-python-headless>=4.8.0,<5.0.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "pytest-mock"]
+
+[project.scripts]
+webcam-mcp = "webcam_mcp.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/webcam_mcp"]
