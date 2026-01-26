@@ -4,23 +4,19 @@ build-backend = "hatchling.build"
 
 [project]
 name = "webcam-mcp"
-version = "0.1.0"
+dynamic = ["version"]
 description = "MCP server for webcam access - capture photos and video for LLM agents"
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
 authors = [
-    {name = "Webcam MCP Contributors"}
+    {name = "Pavel Kirienko <pavel.kirienko@zubax.com>"}
 ]
 keywords = ["mcp", "webcam", "camera", "llm", "agent", "model-context-protocol"]
 classifiers = [
-    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Multimedia :: Video :: Capture",
 ]
@@ -54,3 +50,5 @@ line-length = 100
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]
 ignore = []
+[tool.hatch.version]
+path = "src/webcam_mcp/__init__.py"
