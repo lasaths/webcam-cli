@@ -4,33 +4,30 @@
 
 **MCP server for webcam access - capture photos and video for LLM agents**
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </div>
 
 ---
 
-## Overview
-
 Webcam MCP is a Model Context Protocol (MCP) server that gives LLM agents direct access to your webcam. It enables autonomous agents to capture photos and record video sequences, making it possible to debug cyberphysical systems, monitor environments, and interact with the physical world without human intervention.
 
-## Features
+Features:
 
-- **📸 High-Resolution Photos**: Capture Full HD (1920x1080) images
-- **🎥 Video Recording**: Record up to 50 frames over a specified duration (480p)
+- **📸 High-Resolution Photos**: Capture still images
+- **🎥 Video Recording**: Record a sequence of frames over a specified duration
 - **🌐 Remote Access**: SSE transport for network-accessible deployment
 - **⚙️ Configurable**: Adjust resolution, camera index, and quality settings
 - **🔌 Cross-Platform**: Works on Linux, macOS, and Windows
 - **🚀 Easy Integration**: Simple MCP client configuration
 
-## Installation
+## Usage
+
+Install:
 
 ```bash
 pip install webcam-mcp
 ```
-
-## Quick Start
 
 Start the MCP server:
 
@@ -40,13 +37,7 @@ webcam-mcp
 
 The server will start on `http://0.0.0.0:8000/sse` by default.
 
-## CLI Reference
-
-```bash
-webcam-mcp [OPTIONS]
-```
-
-### Options
+### CLI options
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
@@ -109,7 +100,7 @@ Captures a single high-resolution photo from the webcam.
 
 **Parameters:** None
 
-**Returns:** JPEG image (default: 1920x1080, quality 90)
+**Returns:** JPEG image
 
 **Example usage in Claude:**
 ```
@@ -121,11 +112,12 @@ Can you take a photo and describe what you see?
 Records video frames over a specified duration.
 
 **Parameters:**
-- `duration_seconds` (float, optional): Recording duration in seconds (default: 5.0)
+- `duration_seconds` (float, optional): Recording duration in seconds
   - Minimum: 1.0 second
   - Maximum: 60.0 seconds
+  - Default: 5.0 seconds
 
-**Returns:** List of up to 50 JPEG frames (default: 640x480, quality 90)
+**Returns:** List of JPEG frames
 
 **Example usage in Claude:**
 ```
@@ -180,20 +172,10 @@ WARNING: Requested resolution 1920x1080, but camera provided 1280x720
 
 ## Development
 
-### Setup
-
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd webcam-mcp
-
 # Install in editable mode with dev dependencies
 pip install -e ".[dev]"
-```
 
-### Running Tests
-
-```bash
 # Run all tests
 pytest
 
@@ -205,30 +187,3 @@ pytest tests/test_camera.py
 ```
 
 All tests use mocked camera hardware, so no physical webcam is required for testing.
-
-### Project Structure
-
-```
-webcam-mcp/
-├── src/webcam_mcp/
-│   ├── __init__.py      # Package version
-│   ├── camera.py        # Webcam capture logic
-│   ├── server.py        # FastMCP server and tools
-│   ├── cli.py           # Command-line interface
-│   └── config.py        # Configuration dataclass
-├── tests/               # Test suite
-├── pyproject.toml       # Package configuration
-└── README.md           # This file
-```
-
-## License
-
-MIT License - see LICENSE file for details.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues or pull requests.
-
----
-
-**Built with [FastMCP](https://github.com/modelcontextprotocol/python-sdk)** | **Powered by OpenCV**
