@@ -12,6 +12,8 @@
 
 Webcam MCP is a Model Context Protocol (MCP) server that gives LLM agents direct access to your webcam. It enables autonomous agents to capture photos and record video sequences, making it possible to debug cyberphysical systems, monitor environments, and interact with the physical world without human intervention.
 
+![Webcam MCP demo](demo.png)
+
 Features:
 
 - **📸 High-Resolution Photos**: Capture still images
