@@ -7,12 +7,32 @@ name = "webcam-mcp"
 version = "0.1.0"
 description = "MCP server for webcam access - capture photos and video for LLM agents"
 readme = "README.md"
-license = "MIT"
+license = {text = "MIT"}
 requires-python = ">=3.10"
+authors = [
+    {name = "Webcam MCP Contributors"}
+]
+keywords = ["mcp", "webcam", "camera", "llm", "agent", "model-context-protocol"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Multimedia :: Video :: Capture",
+]
 dependencies = [
     "mcp>=1.6.0,<2.0.0",
     "opencv-python-headless>=4.8.0,<5.0.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/modelcontextprotocol/servers"
+Repository = "https://github.com/modelcontextprotocol/servers"
+Issues = "https://github.com/modelcontextprotocol/servers/issues"
 
 [project.optional-dependencies]
 dev = ["pytest", "pytest-asyncio", "pytest-mock"]
