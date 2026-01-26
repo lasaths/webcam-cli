@@ -4,6 +4,7 @@
 
 **MCP server for webcam access - capture photos and video for LLM agents**
 
+[![PyPI](https://img.shields.io/pypi/v/webcam-mcp)](https://pypi.org/project/webcam-mcp/)
 [![CI](https://github.com/pavel-kirienko/webcam_mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/pavel-kirienko/webcam_mcp/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
