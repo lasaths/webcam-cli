@@ -57,7 +57,8 @@ def create_server(config: ServerConfig) -> FastMCP:
         Raises:
             WebcamError: If camera access fails or capture errors occur
         """
-        assert _config is not None
+        if _config is None:
+            raise RuntimeError("Server not initialized: call create_server() first")
         cam = WebcamCapture(_config.camera_index)
         jpeg_bytes = cam.capture_photo(
             width=_config.photo_width, height=_config.photo_height, quality=_config.jpeg_quality
@@ -80,7 +81,8 @@ def create_server(config: ServerConfig) -> FastMCP:
         Raises:
             WebcamError: If camera access fails or capture errors occur
         """
-        assert _config is not None
+        if _config is None:
+            raise RuntimeError("Server not initialized: call create_server() first")
         cam = WebcamCapture(_config.camera_index)
         frames = cam.capture_video_frames(
             duration_seconds=duration_seconds,

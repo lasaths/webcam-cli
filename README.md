@@ -30,7 +30,7 @@ Features:
 Install:
 
 ```bash
-pip install webcam-mcp
+uv tool install webcam-mcp
 ```
 
 Start the MCP server:
@@ -54,7 +54,7 @@ You can test the server using any MCP client, e.g., MCP Inspector (install via `
 | `--photo-height` | integer | `1080` | Default photo height in pixels |
 | `--video-width` | integer | `640` | Default video frame width in pixels |
 | `--video-height` | integer | `480` | Default video frame height in pixels |
-| `--version` | - | - | Show version and exit |
+| `--transport` | string | `stdio` | Transport: `stdio` (Copilot/CLI tools) or `sse` (HTTP server) |
 
 ### Examples
 
@@ -180,16 +180,20 @@ WARNING: Requested resolution 1920x1080, but camera provided 1280x720
 
 ```bash
 # Install in editable mode with dev dependencies
-pip install -e ".[dev]"
+uv sync --all-groups
 
 # Run all tests
-pytest
+uv run pytest
 
 # Run with verbose output
-pytest -v
+uv run pytest -v
 
 # Run specific test file
-pytest tests/test_camera.py
+uv run pytest tests/test_camera.py
+
+# Lint
+uv run ruff check .
+uv run ruff format .
 ```
 
 All tests use mocked camera hardware, so no physical webcam is required for testing.

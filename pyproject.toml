@@ -30,11 +30,14 @@ Homepage = "https://github.com/modelcontextprotocol/servers"
 Repository = "https://github.com/modelcontextprotocol/servers"
 Issues = "https://github.com/modelcontextprotocol/servers/issues"
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = ["pytest", "pytest-asyncio", "pytest-mock", "ruff"]
 
 [project.scripts]
 webcam-mcp = "webcam_mcp.cli:main"
+
+[tool.uv]
+package = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/webcam_mcp"]

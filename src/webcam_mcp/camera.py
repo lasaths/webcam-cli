@@ -121,6 +121,11 @@ class WebcamCapture:
         Raises:
             WebcamError: If capture fails
         """
+        if width <= 0 or height <= 0:
+            raise WebcamError(f"Resolution must be positive, got {width}x{height}")
+        if not (0 <= quality <= 100):
+            raise WebcamError(f"JPEG quality must be 0-100, got {quality}")
+
         cap = self._open_camera()
         try:
             self._set_resolution(cap, width, height)
@@ -165,6 +170,10 @@ class WebcamCapture:
             raise WebcamError(f"Duration must be >= 1.0 seconds, got {duration_seconds}")
         if duration_seconds > 60.0:
             raise WebcamError(f"Duration must be <= 60.0 seconds, got {duration_seconds}")
+        if width <= 0 or height <= 0:
+            raise WebcamError(f"Resolution must be positive, got {width}x{height}")
+        if not (0 <= quality <= 100):
+            raise WebcamError(f"JPEG quality must be 0-100, got {quality}")
 
         cap = self._open_camera()  # Uses self.camera_index
         try:

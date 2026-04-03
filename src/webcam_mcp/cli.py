@@ -76,6 +76,14 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
         version=f"webcam-mcp {__version__}",
     )
 
+    parser.add_argument(
+        "--transport",
+        type=str,
+        default="stdio",
+        choices=["stdio", "sse"],
+        help="Transport: 'stdio' for Copilot/CLI tools, 'sse' for HTTP server (default: stdio)",
+    )
+
     return parser.parse_args(args)
 
 
@@ -100,7 +108,7 @@ def main(args: list[str] | None = None) -> None:
     )
 
     server = create_server(config)
-    server.run(transport="sse")
+    server.run(transport=parsed_args.transport)
 
 
 if __name__ == "__main__":
