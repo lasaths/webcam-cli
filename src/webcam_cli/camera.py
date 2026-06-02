@@ -6,7 +6,7 @@ import time
 
 import cv2
 
-logger = logging.getLogger("webcam_mcp")
+logger = logging.getLogger("webcam_cli")
 
 
 class WebcamError(Exception):

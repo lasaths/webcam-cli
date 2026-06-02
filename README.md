@@ -1,20 +1,20 @@
 <div align="center">
 
-# Webcam MCP 📸
+# Webcam CLI 📸
 
 **MCP server for webcam access - capture photos and video for LLM agents**
 
-[![PyPI](https://img.shields.io/pypi/v/webcam-mcp)](https://pypi.org/project/webcam-mcp/)
-[![CI](https://github.com/pavel-kirienko/webcam_mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/pavel-kirienko/webcam_mcp/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/webcam-cli)](https://pypi.org/project/webcam-cli/)
+[![CI](https://github.com/lasaths/webcam-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/lasaths/webcam-cli/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </div>
 
 ---
 
-Webcam MCP is a Model Context Protocol (MCP) server that gives LLM agents direct access to your webcam. It enables autonomous agents to capture photos and record video sequences, making it possible to debug cyberphysical systems, monitor environments, and interact with the physical world without human intervention.
+Webcam CLI is a Model Context Protocol (MCP) server that gives LLM agents direct access to your webcam. It enables autonomous agents to capture photos and record video sequences, making it possible to debug cyberphysical systems, monitor environments, and interact with the physical world without human intervention.
 
-![Webcam MCP demo](demo.png)
+![Webcam CLI demo](demo.png)
 
 Features:
 
@@ -30,13 +30,13 @@ Features:
 Install:
 
 ```bash
-uv tool install webcam-mcp
+uv tool install webcam-cli
 ```
 
 Start the MCP server:
 
 ```bash
-webcam-mcp
+webcam-cli
 ```
 
 The server will start on `http://0.0.0.0:8000/sse` by default.
@@ -62,16 +62,16 @@ You can test the server using any MCP client, e.g., MCP Inspector (install via `
 
 ```bash
 # Start on custom port
-webcam-mcp --port 9000
+webcam-cli --port 9000
 
 # Use different camera (e.g., external USB webcam)
-webcam-mcp --camera-index 1
+webcam-cli --camera-index 1
 
 # Custom photo resolution
-webcam-mcp --photo-width 1280 --photo-height 720
+webcam-cli --photo-width 1280 --photo-height 720
 
 # Capture one photo and exit (with autofocus warm-up)
-webcam-mcp --capture-photo ./captures/snapshot.jpg --autofocus-seconds 2.0
+webcam-cli --capture-photo ./captures/snapshot.jpg --autofocus-seconds 2.0
 ```
 
 ## MCP Client Configuration
@@ -150,8 +150,8 @@ On macOS, you need to grant camera permissions:
 If you see "Camera unavailable" errors:
 
 1. Close other applications using the webcam (Zoom, Skype, etc.)
-2. Check if another instance of `webcam-mcp` is running
-3. Try a different camera index: `webcam-mcp --camera-index 1`
+2. Check if another instance of `webcam-cli` is running
+3. Try a different camera index: `webcam-cli --camera-index 1`
 
 ### Wrong Camera Index
 

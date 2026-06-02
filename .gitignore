@@ -91,3 +91,5 @@ snapshot.jpg
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+/captures
+graphify-out/

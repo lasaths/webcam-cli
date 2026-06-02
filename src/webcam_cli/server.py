@@ -11,8 +11,8 @@ configuration of host/port and camera settings.
 from mcp.server.fastmcp import FastMCP
 from mcp.server.fastmcp.utilities.types import Image
 
-from webcam_mcp.camera import WebcamCapture
-from webcam_mcp.config import ServerConfig
+from webcam_cli.camera import WebcamCapture
+from webcam_cli.config import ServerConfig
 
 # Module-level config (set by create_server before tools are called)
 _config: ServerConfig | None = None
@@ -31,8 +31,8 @@ def create_server(config: ServerConfig) -> FastMCP:
         Configured FastMCP server instance ready to run
 
     Example:
-        >>> from webcam_mcp.config import ServerConfig
-        >>> from webcam_mcp.server import create_server
+        >>> from webcam_cli.config import ServerConfig
+        >>> from webcam_cli.server import create_server
         >>> config = ServerConfig(host='0.0.0.0', port=8000)
         >>> server = create_server(config)
         >>> server.run(transport='sse')

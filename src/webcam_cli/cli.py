@@ -3,10 +3,10 @@
 import argparse
 from pathlib import Path
 
-from webcam_mcp import __version__
-from webcam_mcp.camera import WebcamCapture, WebcamError
-from webcam_mcp.config import ServerConfig
-from webcam_mcp.server import create_server
+from webcam_cli import __version__
+from webcam_cli.camera import WebcamCapture, WebcamError
+from webcam_cli.config import ServerConfig
+from webcam_cli.server import create_server
 
 
 def parse_args(args: list[str] | None = None) -> argparse.Namespace:
@@ -19,7 +19,7 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
         Parsed arguments namespace
     """
     parser = argparse.ArgumentParser(
-        prog="webcam-mcp",
+        prog="webcam-cli",
         description="MCP server for webcam access",
     )
 
@@ -75,7 +75,7 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--version",
         action="version",
-        version=f"webcam-mcp {__version__}",
+        version=f"webcam-cli {__version__}",
     )
 
     parser.add_argument(

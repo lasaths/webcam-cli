@@ -1,6 +1,6 @@
 ---
 name: take-photo
-description: Capture a single webcam photo with the webcam-mcp CLI, including autofocus warmup and camera fallback. Use when the user asks to take a photo, snapshot, or webcam image.
+description: Capture a single webcam photo with the webcam-cli CLI, including autofocus warmup and camera fallback. Use when the user asks to take a photo, snapshot, or webcam image.
 ---
 
 # Take Photo
@@ -9,10 +9,10 @@ Capture one webcam frame quickly using this repository's CLI flow.
 
 ## Default command
 
-Run from `/Users/lasaths/Documents/GitHub/webcam_mcp`:
+Run from `/Users/lasaths/Documents/GitHub/webcam-cli`:
 
 ```bash
-uv run webcam-mcp --capture-photo /Users/lasaths/Documents/GitHub/Bahnblick/.verification/webcam_capture.jpg --autofocus-seconds 2.0 --camera-index 0
+uv run webcam-cli --capture-photo /Users/lasaths/Documents/GitHub/Bahnblick/.verification/webcam_capture.jpg --autofocus-seconds 2.0 --camera-index 0
 ```
 
 ## Rules

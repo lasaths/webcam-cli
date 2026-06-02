@@ -22,7 +22,7 @@ jobs:
           # Extract version from __init__.py
           VERSION=$(python3 << 'EOF'
           import re
-          with open('src/webcam_mcp/__init__.py') as f:
+          with open('src/webcam_cli/__init__.py') as f:
               match = re.search(r'__version__\s*=\s*["\']([^"\']+)["\']', f.read())
               print(match.group(1))
           EOF

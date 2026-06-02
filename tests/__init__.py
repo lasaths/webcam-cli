@@ -1,1 +1,1 @@
-"""Test suite for webcam-mcp."""
+"""Test suite for webcam-cli."""

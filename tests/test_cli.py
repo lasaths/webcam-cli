@@ -2,7 +2,7 @@
 
 import pytest
 
-from webcam_mcp.cli import parse_args
+from webcam_cli.cli import parse_args
 
 
 def test_cli_defaults():

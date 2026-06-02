@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from webcam_mcp.camera import WebcamCapture, WebcamError
+from webcam_cli.camera import WebcamCapture, WebcamError
 
 
 def test_camera_init():

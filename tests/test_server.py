@@ -2,8 +2,8 @@
 
 import pytest
 
-from webcam_mcp.config import ServerConfig
-from webcam_mcp.server import create_server
+from webcam_cli.config import ServerConfig
+from webcam_cli.server import create_server
 
 
 @pytest.mark.asyncio
