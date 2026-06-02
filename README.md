@@ -55,6 +55,8 @@ You can test the server using any MCP client, e.g., MCP Inspector (install via `
 | `--video-width` | integer | `640` | Default video frame width in pixels |
 | `--video-height` | integer | `480` | Default video frame height in pixels |
 | `--transport` | string | `stdio` | Transport: `stdio` (Copilot/CLI tools) or `sse` (HTTP server) |
+| `--capture-photo` | string | _(none)_ | Capture one photo to path and exit (CLI mode) |
+| `--autofocus-seconds` | float | `2.0` | Autofocus/exposure warm-up duration for `--capture-photo` |
 
 ### Examples
 
@@ -67,6 +69,9 @@ webcam-mcp --camera-index 1
 
 # Custom photo resolution
 webcam-mcp --photo-width 1280 --photo-height 720
+
+# Capture one photo and exit (with autofocus warm-up)
+webcam-mcp --capture-photo ./captures/snapshot.jpg --autofocus-seconds 2.0
 ```
 
 ## MCP Client Configuration

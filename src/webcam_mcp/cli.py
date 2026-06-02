@@ -1,8 +1,10 @@
 """Command-line interface for Webcam MCP server."""
 
 import argparse
+from pathlib import Path
 
 from webcam_mcp import __version__
+from webcam_mcp.camera import WebcamCapture, WebcamError
 from webcam_mcp.config import ServerConfig
 from webcam_mcp.server import create_server
 
@@ -84,6 +86,20 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
         help="Transport: 'stdio' for Copilot/CLI tools, 'sse' for HTTP server (default: stdio)",
     )
 
+    parser.add_argument(
+        "--capture-photo",
+        type=str,
+        default=None,
+        help="Capture a single photo to this output path and exit",
+    )
+
+    parser.add_argument(
+        "--autofocus-seconds",
+        type=float,
+        default=2.0,
+        help="Autofocus warm-up time before single-photo capture (default: 2.0)",
+    )
+
     return parser.parse_args(args)
 
 
@@ -96,6 +112,30 @@ def main(args: list[str] | None = None) -> None:
         args: List of arguments to parse (defaults to sys.argv[1:])
     """
     parsed_args = parse_args(args)
+
+    if parsed_args.capture_photo:
+        output_path = Path(parsed_args.capture_photo).expanduser()
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        def _capture_with_index(index: int) -> bytes:
+            camera = WebcamCapture(index)
+            return camera.capture_photo(
+                width=parsed_args.photo_width,
+                height=parsed_args.photo_height,
+                quality=90,
+                autofocus_seconds=parsed_args.autofocus_seconds,
+            )
+
+        try:
+            jpeg_bytes = _capture_with_index(parsed_args.camera_index)
+        except WebcamError:
+            if parsed_args.camera_index != 0:
+                raise
+            jpeg_bytes = _capture_with_index(1)
+
+        output_path.write_bytes(jpeg_bytes)
+        print(str(output_path))
+        return
 
     config = ServerConfig(
         camera_index=parsed_args.camera_index,

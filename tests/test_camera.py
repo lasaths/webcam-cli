@@ -90,3 +90,10 @@ def test_jpeg_encoding_failure(mocker):
 
     with pytest.raises(WebcamError, match="Failed to encode JPEG"):
         cam.capture_photo()
+
+
+def test_autofocus_seconds_validation():
+    cam = WebcamCapture(0)
+
+    with pytest.raises(WebcamError, match="Autofocus seconds must be >= 0"):
+        cam.capture_photo(autofocus_seconds=-1.0)

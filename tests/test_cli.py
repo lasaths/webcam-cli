@@ -15,6 +15,8 @@ def test_cli_defaults():
     assert args.photo_height == 1080
     assert args.video_width == 640
     assert args.video_height == 480
+    assert args.capture_photo is None
+    assert args.autofocus_seconds == 2.0
 
 
 def test_cli_custom_host_port():
@@ -42,6 +44,20 @@ def test_cli_custom_video_resolution():
 
     assert args.video_width == 1280
     assert args.video_height == 720
+
+
+def test_cli_capture_photo_args():
+    args = parse_args(
+        [
+            "--capture-photo",
+            "/tmp/photo.jpg",
+            "--autofocus-seconds",
+            "3.5",
+        ]
+    )
+
+    assert args.capture_photo == "/tmp/photo.jpg"
+    assert args.autofocus_seconds == 3.5
 
 
 def test_cli_version():

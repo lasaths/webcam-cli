@@ -107,13 +107,20 @@ class WebcamCapture:
             raise WebcamError("Failed to encode JPEG")
         return buffer.tobytes()
 
-    def capture_photo(self, width: int = 1920, height: int = 1080, quality: int = 75) -> bytes:
+    def capture_photo(
+        self,
+        width: int = 1920,
+        height: int = 1080,
+        quality: int = 75,
+        autofocus_seconds: float = 2.0,
+    ) -> bytes:
         """Capture a single photo. All params have defaults.
 
         Args:
             width: Photo width in pixels (default: 1920)
             height: Photo height in pixels (default: 1080)
             quality: JPEG quality 0-100 (default: 75)
+            autofocus_seconds: Seconds to warm up camera before reading frame
 
         Returns:
             JPEG-encoded photo as bytes
@@ -125,13 +132,17 @@ class WebcamCapture:
             raise WebcamError(f"Resolution must be positive, got {width}x{height}")
         if not (0 <= quality <= 100):
             raise WebcamError(f"JPEG quality must be 0-100, got {quality}")
+        if autofocus_seconds < 0:
+            raise WebcamError(f"Autofocus seconds must be >= 0, got {autofocus_seconds}")
 
         cap = self._open_camera()
         try:
             self._set_resolution(cap, width, height)
-            # Warm-up for photo (5 frames - less than video)
-            for _ in range(5):
+            # Warm up autofocus/exposure using both time and reads.
+            start = time.time()
+            while (time.time() - start) < autofocus_seconds:
                 cap.read()
+                time.sleep(0.02)
             ret, frame = cap.read()
             if not ret:
                 raise WebcamError("Failed to capture frame")
